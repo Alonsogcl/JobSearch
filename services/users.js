@@ -1,11 +1,31 @@
+//Importar el modelo
+const UserModel = require("../models/user") //Y ya podemos comenzar a consultarlo
+
 //Para crearlo se necesita un modelo de usuario
 class Users{ //Clase que nos permita agrupar la funcionalidad necesaria
-  getAll(){ //Obtener toda la información de los usuarios
+  async getAll(){ //Obtener toda la información de los usuarios
+    try{//es obligatorio usar el try catch manejo de errores
+      
+      const users=await UserModel.find() //dentro del método find() va la consulta que queremos ejecutar
+      //Ya tenemos disponibles los datos
+    
+      return users //Devuelve un Array de objetos
 
+    }catch(error){
+      console.log(error)
+    }
   }
 
-  create(data){ //Crear usuario y recibe los datos del usuario
+  async create(data){ //Crear usuario y recibe los datos del usuario
+    try{//es obligatorio usar el try catch manejo de errores
+      
+      const user=await UserModel.create(data) //Crea un usuario
+    
+      return user //Devuelve un objeto con los datos
 
+    }catch(error){
+      console.log(error)
+    }
   }
 }
 

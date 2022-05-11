@@ -1,4 +1,14 @@
-const { mongoose } = require("../config/db")
+const { mongoose } = require("../config/db") //Se importa mongoose
 
-//Investigar acerca de los modelos de mongoose
-//Implementar modelo de usuario
+const Schema = mongoose.Schema //Es necesario tener un esquema
+
+//Se crea nuestro esquema instancia del esquema
+const userSchema = new Schema({ //Estructura
+  name:String,
+  email:String,
+  password:String,
+})
+
+const UserModel=mongoose.model("User", userSchema) //Crear Modelo y pasarle el esquema
+
+module.exports=UserModel
