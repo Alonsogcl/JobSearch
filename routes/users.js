@@ -47,17 +47,15 @@ function users(app) { //se pasa como dependencia la aplicación
     })*/
   })
 
-  router.put("/", (req, res) => {
+  router.put("/:id", async (req, res) => {
 
-    return res.json({
-      hola: "mundo"
-    })
+    const user = await userServ.update(req.params.id, req.body)
+    return res.json(user)
   })
 
-  router.delete("/", (req, res) => {
-    return res.json({
-      hola: "mundo"
-    })
+  router.delete("/:id", async (req, res) => {
+    const user = await userServ.delete(req.params.id)
+    return res.json(user)
   })
 }
 
