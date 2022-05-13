@@ -24,7 +24,16 @@ class Users { //Clase que nos permita agrupar la funcionalidad necesaria
       return user //Devuelve un objeto con los datos
 
     } catch (error) {
-      console.log(error)
+      //console.log(error) Se bota el servidor porque no se retorno nada
+      if(error.code===11000){
+        const message=`El correo "${error.keyValue.email}" ya está en uso`
+
+        return{
+          error:true,
+          message
+        }
+      }
+
     }
   }
 
